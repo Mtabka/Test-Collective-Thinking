@@ -58,25 +58,35 @@ class Robot
 		$this->replaceName($name);
 		
 	}
-	public function getName()		
+	/**
+     * @returns {string}
+     */
+	public function getName(): string		
 	{
 		return $this->name;
 	}
-	private function isUnique($name)
+	/**
+     * @param name  string
+	 * @returns {bool}
+     */
+	private function isUnique(String $name): bool	
 	{
 		if(in_array($name,self::$names))
 			return false;
 		else 
 			return true;
 	}
-	private function replaceName($name)
+	/**
+     * @param name  string
+     */
+	private function replaceName(String $name)
 	{
 		$index = array_search($this->name, self::$names);
 		unset(self::$names[$index]);
 		$this->name = $name;
 		self::$names[] = $this->name;
 	}
-	private function random()
+	private function random(): string
 	{
 		$seed = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 		$rand = '';
